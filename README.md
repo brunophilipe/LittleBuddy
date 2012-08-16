@@ -1,4 +1,4 @@
-LittleByddy
+LittleBuddy
 ===========
 
 Electronic Pet
