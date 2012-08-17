@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 
 import com.brunophilipe.littlebuddy.screen.Canvas;
 import com.brunophilipe.littlebuddy.screen.KeyPad;
+import com.brunophilipe.littlebuddy.screen.Menu;
 
 /**
  * @author Bruno Philipe
@@ -41,6 +42,9 @@ public class Application {
 		//window.setResizable(true);
 		
 		keypad = new KeyPad();
+		
+		String menuItems[] = {"feed","play","read","sleep","clean","medicine"};
+		menu = new Menu(menuItems);
 		
 		window.addMouseMotionListener(keypad);
 		window.addMouseMotionListener(new java.awt.event.MouseMotionListener() {
@@ -99,7 +103,7 @@ public class Application {
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				if (dragging) dragging = false;
+				dragging = false;
 			}
 			
 		});
@@ -127,8 +131,16 @@ public class Application {
 		cursorHand = true;
 	}
 	
-	public static void setDirection(int dir) {
-		canvas.setDirection(dir);
+	public static void setSelectedMenuItem(int id) {
+		menu.setSelectedMenuItem(id);
+	}
+	
+	public static void increaseSelectedMenuItem() {
+		menu.increaseSelectedMenuItem();
+	}
+	
+	public static void decreaseSelectedMenuItem() {
+		menu.decreaseSelectedMenuItem();
 	}
 	
 	public static void clearHoverKey() {
@@ -136,8 +148,13 @@ public class Application {
 		cursorHand = false;
 	}
 	
+	public static boolean[][] getMenuScreen() {
+		return menu.getMenuScreen();
+	}
+	
 	private static Application app = new Application();
 	private static JFrame window;
 	private static Canvas canvas;
-	private static KeyPad keypad; 
+	private static KeyPad keypad;
+	private static Menu menu;
 }

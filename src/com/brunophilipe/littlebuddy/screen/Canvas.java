@@ -9,6 +9,8 @@ import java.awt.geom.Rectangle2D;
 
 import javax.swing.JPanel;
 
+import com.brunophilipe.littlebuddy.Application;
+
 /**
  * @author Bruno Philipe
  * Game rendering screen class.
@@ -42,21 +44,19 @@ public class Canvas extends JPanel {
 		
 		n = m%20;
 		
+		boolean[][] screen = Application.getMenuScreen();
+		
 		for (j=0;j<43;j++) {
 			for (i=0;i<58;i++) {
 				auxBox.setFrame(60 + (w*i),60 + (h*j), w-1, h-1);
-				if ((n%20 == 0)){
+				if (screen[i][j]){
 					g2.setColor(colorImage);
 				} else {
 					g2.setColor(colorScreen);
 				}
 				g2.fill(auxBox);
-				n++;
 			}
-			n++;
 		}
-		
-		m+=dir;
 		
 		if (hoverKey >= 0) {
 			g2.drawImage(getBtImage(hoverKey), 680, getBtHeight(hoverKey), 90, 90, this);

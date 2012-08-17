@@ -31,7 +31,12 @@ public class MenuItem {
 	
 	public MenuItem(String image) {
 		String values[] = new String[10];
-		Image resource = Toolkit.getDefaultToolkit().getImage(MenuItem.class.getResource("res/menu/" + image + ".png"));
+		Image resource;
+		try {
+			resource = Toolkit.getDefaultToolkit().getImage(MenuItem.class.getResource("res/menu/" + image + ".png"));
+		} catch (java.lang.NullPointerException ex) {
+			return;
+		}
 		BufferedImage item = toBufferedImage(resource);
 		
 		int x,y;
@@ -45,6 +50,10 @@ public class MenuItem {
 			}
 			values[y] = new String(curLine);
 		}
+	}
+	
+	public Boolean[][] getMap() {
+		return composition;
 	}
 	
 	public static BufferedImage toBufferedImage(Image image) {

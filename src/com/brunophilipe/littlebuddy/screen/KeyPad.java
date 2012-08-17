@@ -7,6 +7,11 @@ import java.awt.event.MouseMotionListener;
 
 import com.brunophilipe.littlebuddy.Application;
 
+/**
+ * 
+ * @author Bruno Philipe
+ * Class that controls the side buttons
+ */
 public class KeyPad implements MouseListener, MouseMotionListener {
 	
 	private Rectangle area = new Rectangle(680,50,90,450);
@@ -33,14 +38,15 @@ public class KeyPad implements MouseListener, MouseMotionListener {
 	public void mousePressed(MouseEvent e) {
 		if ((area.contains(e.getPoint()))&&(getButton(e.getY()) > -1)) {
 			switch (getButton(e.getY())) {
-			case 0:case 1:	
-				Application.setDirection(1);
+			case 0:
+				Application.decreaseSelectedMenuItem();
+				break;
+			case 1:
+				Application.increaseSelectedMenuItem();
 				break;
 			case 2:
-				Application.setDirection(-1);
 				break;
 			case 3:
-				Application.setDirection(0);
 				break;
 			}
 		}
