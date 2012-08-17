@@ -43,7 +43,7 @@ public class Application {
 		
 		keypad = new KeyPad();
 		
-		String menuItems[] = {"feed","play","read","sleep","clean","medicine"};
+		String menuItems[] = {"feed","play","read","sleep","clean","medicine","exit"};
 		menu = new Menu(menuItems);
 		
 		window.addMouseMotionListener(keypad);
