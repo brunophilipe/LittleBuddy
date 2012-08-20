@@ -5,8 +5,18 @@ import java.util.ArrayList;
 public class Menu {
 	private ArrayList<MenuItem> items;
 	private int selectedItem = 0, scroll=0;
+	private static Menu instance = null;
 	
-	public Menu(String inputs[]) {
+	public static Menu getInstance() {
+		return instance;
+	}
+	
+	public static Menu buildAndGetInstance() {
+		String menuItems[] = {"feed","play","read","sleep","clean","medicine","exit"};
+		return instance = new Menu(menuItems);
+	}
+	
+	private Menu(String inputs[]) {
 		items = new ArrayList<MenuItem>();
 		MenuItem auxItem;
 		

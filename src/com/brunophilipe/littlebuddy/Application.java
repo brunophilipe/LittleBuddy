@@ -41,10 +41,8 @@ public class Application {
 		window.setUndecorated(true);
 		//window.setResizable(true);
 		
-		keypad = new KeyPad();
-		
-		String menuItems[] = {"feed","play","read","sleep","clean","medicine","exit"};
-		menu = new Menu(menuItems);
+		keypad = KeyPad.buildAndGetInstance();
+		Menu.buildAndGetInstance();
 		
 		window.addMouseMotionListener(keypad);
 		window.addMouseMotionListener(new java.awt.event.MouseMotionListener() {
@@ -131,30 +129,13 @@ public class Application {
 		cursorHand = true;
 	}
 	
-	public static void setSelectedMenuItem(int id) {
-		menu.setSelectedMenuItem(id);
-	}
-	
-	public static void increaseSelectedMenuItem() {
-		menu.increaseSelectedMenuItem();
-	}
-	
-	public static void decreaseSelectedMenuItem() {
-		menu.decreaseSelectedMenuItem();
-	}
-	
 	public static void clearHoverKey() {
 		canvas.clearHoverKey();
 		cursorHand = false;
-	}
-	
-	public static boolean[][] getMenuScreen() {
-		return menu.getMenuScreen();
 	}
 	
 	private static Application app = new Application();
 	private static JFrame window;
 	private static Canvas canvas;
 	private static KeyPad keypad;
-	private static Menu menu;
 }

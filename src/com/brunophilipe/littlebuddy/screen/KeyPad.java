@@ -15,8 +15,16 @@ import com.brunophilipe.littlebuddy.Application;
 public class KeyPad implements MouseListener, MouseMotionListener {
 	
 	private Rectangle area = new Rectangle(680,50,90,450);
+	private static KeyPad instance = null;
 	
-	public KeyPad() {}
+	public static KeyPad getInstance() {
+		return instance;
+	}
+	
+	public static KeyPad buildAndGetInstance() {
+		instance = new KeyPad();
+		return instance;
+	}
 
 	@Override
 	public void mouseDragged(MouseEvent e) {}
@@ -39,10 +47,10 @@ public class KeyPad implements MouseListener, MouseMotionListener {
 		if ((area.contains(e.getPoint()))&&(getButton(e.getY()) > -1)) {
 			switch (getButton(e.getY())) {
 			case 0:
-				Application.decreaseSelectedMenuItem();
+				Menu.getInstance().decreaseSelectedMenuItem();
 				break;
 			case 1:
-				Application.increaseSelectedMenuItem();
+				Menu.getInstance().increaseSelectedMenuItem();
 				break;
 			case 2:
 				break;

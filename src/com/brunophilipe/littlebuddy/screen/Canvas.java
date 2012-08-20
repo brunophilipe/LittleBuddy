@@ -9,8 +9,6 @@ import java.awt.geom.Rectangle2D;
 
 import javax.swing.JPanel;
 
-import com.brunophilipe.littlebuddy.Application;
-
 /**
  * @author Bruno Philipe
  * Game rendering screen class.
@@ -27,7 +25,7 @@ public class Canvas extends JPanel {
 	private static Image imgBtOK = Toolkit.getDefaultToolkit().getImage(Canvas.class.getResource("res/bt_ok.png"));
 	private static Image imgBtMENU = Toolkit.getDefaultToolkit().getImage(Canvas.class.getResource("res/bt_menu.png"));
 	
-	private int i,j,hoverKey = -1,n=0,m=0,dir=1;
+	private int i,j,hoverKey = -1;
 	private double w,h;
 	
 	private static Color colorScreen = new Color(158,182,165);
@@ -42,9 +40,7 @@ public class Canvas extends JPanel {
 		w = 580/58;
 		h = 430/43;
 		
-		n = m%20;
-		
-		boolean[][] screen = Application.getMenuScreen();
+		boolean[][] screen = Menu.getInstance().getMenuScreen();
 		
 		for (j=0;j<43;j++) {
 			for (i=0;i<58;i++) {
@@ -97,9 +93,5 @@ public class Canvas extends JPanel {
 	
 	public void clearHoverKey() {
 		hoverKey = -1;
-	}
-	
-	public void setDirection(int dir) {
-		this.dir = dir;
 	}
 }
