@@ -108,11 +108,11 @@ public class Application {
 			}
 			
 		});
-		//try {
-			//com.sun.awt.AWTUtilities.setWindowOpaque(window, false);
-		//} catch (Exception ex) {
+		try {
+			com.sun.awt.AWTUtilities.setWindowOpaque(window, false);
+		} catch (Exception ex) {
 			window.setBackground(Color.gray);
-		//}
+		}
 		
 		canvas = new Canvas();
 		canvas.setPreferredSize(new java.awt.Dimension(800,600));
@@ -143,22 +143,10 @@ public class Application {
 	
 	private void setLookAndFeel() {
 		try {
-			// Set cross-platform Java L&F (also called "Metal")
 			javax.swing.UIManager.setLookAndFeel(
 			javax.swing.UIManager.getSystemLookAndFeelClassName());
 		} 
-		catch (javax.swing.UnsupportedLookAndFeelException e) {
-		   // handle exception
-		}
-		catch (ClassNotFoundException e) {
-		   // handle exception
-		}
-		catch (InstantiationException e) {
-		   // handle exception
-		}
-		catch (IllegalAccessException e) {
-		   // handle exception
-		}
+		catch (Exception e) {}
 	}
 	
 	private static Application app = new Application();
