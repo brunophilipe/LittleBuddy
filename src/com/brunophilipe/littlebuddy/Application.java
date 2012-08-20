@@ -1,5 +1,6 @@
 package com.brunophilipe.littlebuddy;
 
+import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Point;
@@ -34,6 +35,8 @@ public class Application {
 	private static boolean cursorHand = false;
 	
 	private void initComponents() {
+		this.setLookAndFeel();
+		
 		window = new JFrame();
 		window.setTitle("LittleBuddy - InDev");
 		window.setMinimumSize(new java.awt.Dimension(800,600));
@@ -105,7 +108,11 @@ public class Application {
 			}
 			
 		});
-		com.sun.awt.AWTUtilities.setWindowOpaque(window, false);
+		//try {
+			//com.sun.awt.AWTUtilities.setWindowOpaque(window, false);
+		//} catch (Exception ex) {
+			window.setBackground(Color.gray);
+		//}
 		
 		canvas = new Canvas();
 		canvas.setPreferredSize(new java.awt.Dimension(800,600));
@@ -132,6 +139,26 @@ public class Application {
 	public static void clearHoverKey() {
 		canvas.clearHoverKey();
 		cursorHand = false;
+	}
+	
+	private void setLookAndFeel() {
+		try {
+			// Set cross-platform Java L&F (also called "Metal")
+			javax.swing.UIManager.setLookAndFeel(
+			javax.swing.UIManager.getSystemLookAndFeelClassName());
+		} 
+		catch (javax.swing.UnsupportedLookAndFeelException e) {
+		   // handle exception
+		}
+		catch (ClassNotFoundException e) {
+		   // handle exception
+		}
+		catch (InstantiationException e) {
+		   // handle exception
+		}
+		catch (IllegalAccessException e) {
+		   // handle exception
+		}
 	}
 	
 	private static Application app = new Application();

@@ -15,7 +15,7 @@ import javax.swing.ImageIcon;
 public class MenuItem {
 	private Boolean composition[][];
 	
-	public static void main(String args[]) {
+	@Deprecated	public static void main(String args[]) {
 		MenuItem menuItem = new MenuItem("sleep");
 		int x,y;
 		char print;

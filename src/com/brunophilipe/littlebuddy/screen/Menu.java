@@ -7,6 +7,14 @@ public class Menu {
 	private int selectedItem = 0, scroll=0;
 	private static Menu instance = null;
 	
+	public static final int ITEM_FEED = 0;
+	public static final int ITEM_PLAY = 1;
+	public static final int ITEM_READ = 2;
+	public static final int ITEM_SLEEP = 3;
+	public static final int ITEM_CLEAN = 4;
+	public static final int ITEM_MEDICINE = 5;
+	public static final int ITEM_EXIT = 6;
+	
 	public static Menu getInstance() {
 		return instance;
 	}
@@ -26,16 +34,20 @@ public class Menu {
 		}
 	}
 	
-	public void setSelectedMenuItem(int id) {
+	public void setSelectedItem(int id) {
 		selectedItem = id;
 	}
 	
-	public void increaseSelectedMenuItem() {
+	public int getSelectedItem() {
+		return selectedItem;
+	}
+	
+	public void increaseSelectedItem() {
 		if (selectedItem<items.size()-1) selectedItem++;
 		else selectedItem = 0;
 	}
 	
-	public void decreaseSelectedMenuItem() {
+	public void decreaseSelectedItem() {
 		if (selectedItem>0) selectedItem--;
 		else selectedItem = items.size()-1;
 	}

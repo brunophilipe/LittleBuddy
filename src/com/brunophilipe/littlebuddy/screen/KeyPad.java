@@ -5,6 +5,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
+import javax.swing.JOptionPane;
+
 import com.brunophilipe.littlebuddy.Application;
 
 /**
@@ -47,12 +49,17 @@ public class KeyPad implements MouseListener, MouseMotionListener {
 		if ((area.contains(e.getPoint()))&&(getButton(e.getY()) > -1)) {
 			switch (getButton(e.getY())) {
 			case 0:
-				Menu.getInstance().decreaseSelectedMenuItem();
+				Menu.getInstance().decreaseSelectedItem();
 				break;
 			case 1:
-				Menu.getInstance().increaseSelectedMenuItem();
+				Menu.getInstance().increaseSelectedItem();
 				break;
 			case 2:
+				switch (Menu.getInstance().getSelectedItem()) {
+				case Menu.ITEM_EXIT:
+					int ret = JOptionPane.showConfirmDialog(null, "Are you sure you want to close LittleBuddy?", "Attention!", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+					if (ret == JOptionPane.YES_OPTION) System.exit(0);
+				}
 				break;
 			case 3:
 				break;
