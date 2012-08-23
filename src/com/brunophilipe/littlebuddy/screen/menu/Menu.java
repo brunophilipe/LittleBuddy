@@ -1,4 +1,4 @@
-package com.brunophilipe.littlebuddy.screen;
+package com.brunophilipe.littlebuddy.screen.menu;
 
 import java.util.ArrayList;
 
@@ -55,26 +55,25 @@ public class Menu {
 	public boolean[][] getMenuScreen() {
 		int i,x,y,m,n;
 		i = x = y = m = n = 0;
-		boolean screen[][] = new boolean[58][43],aux;
+		boolean screen[][] = new boolean[97][72],aux;
 		
-		while (selectedItem - scroll > 3) {
+		while (selectedItem - scroll > 5) {
 			scroll++;
 		}
 		
 		while (selectedItem < scroll) scroll--;
 		
-		for (i=0+scroll;i<4+scroll;i++) {
+		for (i=0+scroll;i<6+scroll;i++) {
 			for (y=0;y<10;y++) {
-				for (x=0;x<56;x++) {
+				for (x=0;x<95;x++) {
 					aux = items.get(i).getMap()[m][n];
 					if (i == selectedItem) aux = !aux;
-					screen[x+1][y+((i-scroll)*11)] = aux;
+					screen[x+1][y+((i-scroll)*12)+1] = aux;
 					m++;
 				}
 				n++;
 				m=0;
 			}
-			y++;
 			n=0;
 		}
 		

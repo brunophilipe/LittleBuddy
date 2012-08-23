@@ -8,6 +8,7 @@ import java.awt.event.MouseMotionListener;
 import javax.swing.JOptionPane;
 
 import com.brunophilipe.littlebuddy.Application;
+import com.brunophilipe.littlebuddy.screen.menu.Menu;
 
 /**
  * 

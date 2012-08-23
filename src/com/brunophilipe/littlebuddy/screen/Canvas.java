@@ -9,6 +9,8 @@ import java.awt.geom.Rectangle2D;
 
 import javax.swing.JPanel;
 
+import com.brunophilipe.littlebuddy.screen.menu.Menu;
+
 /**
  * @author Bruno Philipe
  * Game rendering screen class.
@@ -37,13 +39,13 @@ public class Canvas extends JPanel {
 		g2.drawImage(imgBack, 0, 0, 800, 600, this);
 		g2.setColor(colorScreen);
 		
-		w = 580/58;
-		h = 430/43;
+		w = 6;
+		h = 6;
 		
 		boolean[][] screen = Menu.getInstance().getMenuScreen();
 		
-		for (j=0;j<43;j++) {
-			for (i=0;i<58;i++) {
+		for (j=0;j<72;j++) {
+			for (i=0;i<97;i++) {
 				auxBox.setFrame(60 + (w*i),60 + (h*j), w-1, h-1);
 				if (screen[i][j]){
 					g2.setColor(colorImage);

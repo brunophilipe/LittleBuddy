@@ -11,7 +11,7 @@ import javax.swing.JFrame;
 
 import com.brunophilipe.littlebuddy.screen.Canvas;
 import com.brunophilipe.littlebuddy.screen.KeyPad;
-import com.brunophilipe.littlebuddy.screen.Menu;
+import com.brunophilipe.littlebuddy.screen.menu.Menu;
 
 /**
  * @author Bruno Philipe
@@ -81,7 +81,6 @@ public class Application {
 					window.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 				}
 			}
-			
 		});
 		window.addMouseListener(keypad);
 		window.addMouseListener(new java.awt.event.MouseListener() {
@@ -127,6 +126,7 @@ public class Application {
 	}
 	
 	private boolean isMouseOnDragSpot() {
+		if (isMac()) return false;
 		Point ml = window.getMousePosition();
 		return ((ml != null)&&(!dragging)&&(ml.x < 50)&&(ml.y<50));
 	}
@@ -139,6 +139,11 @@ public class Application {
 	public static void clearHoverKey() {
 		canvas.clearHoverKey();
 		cursorHand = false;
+	}
+	
+	public static boolean isMac() {
+		String os = System.getProperty("os.name").toLowerCase();
+		return (os.indexOf("mac") >= 0);
 	}
 	
 	private void setLookAndFeel() {

@@ -1,4 +1,4 @@
-package com.brunophilipe.littlebuddy.screen;
+package com.brunophilipe.littlebuddy.screen.menu;
 
 import com.brunophilipe.littlebuddy.utility.MenuEntries;
 
@@ -9,14 +9,13 @@ public class MenuItem {
 		String values[] = MenuEntries.getMenuEntry(entry);
 		int x,y;
 		char curLine[];
-		composition = new Boolean[56][10];
+		composition = new Boolean[97][10];
 		
 		for (y=0;y<10;y++) {
 			curLine = values[y].toCharArray();
-			for (x=0;x<56;x++) {
+			for (x=0;x<95;x++) {
 				composition[x][y] = (curLine[x] == '8');
 			}
-			values[y] = new String(curLine);
 		}
 	}
 	
