@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class Menu {
 	private ArrayList<MenuItem> items;
 	private int selectedItem = 0, scroll=0;
-	private static Menu instance = null;
 	
 	public static final int ITEM_FEED = 0;
 	public static final int ITEM_PLAY = 1;
@@ -15,16 +14,7 @@ public class Menu {
 	public static final int ITEM_MEDICINE = 5;
 	public static final int ITEM_EXIT = 6;
 	
-	public static Menu getInstance() {
-		return instance;
-	}
-	
-	public static Menu buildAndGetInstance() {
-		String menuItems[] = {"feed","play","read","sleep","clean","medicine","exit"};
-		return instance = new Menu(menuItems);
-	}
-	
-	private Menu(String inputs[]) {
+	public Menu(String inputs[]) {
 		items = new ArrayList<MenuItem>();
 		MenuItem auxItem;
 		
